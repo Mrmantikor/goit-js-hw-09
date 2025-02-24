@@ -7,7 +7,6 @@ const fillFormFields = () => {
   );
 
   if (formDataFromLS === null) {
-    // local storage is empty?
     return;
   }
   formDataFromEL = formDataFromLS;
