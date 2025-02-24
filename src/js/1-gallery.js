@@ -1,6 +1,6 @@
-// Module with Babel tranformation
+// Описаний в документації
 import SimpleLightbox from 'simplelightbox';
-// Plain ES Module without Babel
+// Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const images = [
