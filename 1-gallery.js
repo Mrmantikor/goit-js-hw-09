@@ -7,4 +7,4 @@ import"./assets/modulepreload-polyfill-B5Qt9EMX.js";import{S as e}from"./assets/
     />
   </a>
 </li>`}).join("");c.innerHTML=s(n);new e(".gallery li a",{captions:!0,captionClass:"style-caption",captionsData:"alt",captionDelay:250,disableRightClick:!0});
-//# sourceMappingURL=page-2.js.map
+//# sourceMappingURL=1-gallery.js.map
