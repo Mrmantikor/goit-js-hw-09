@@ -1,5 +1,9 @@
 const feedbackForm = document.querySelector('.feedback-form');
-let formDataFromEL = {};
+
+const formData = {
+  email: '',
+  message: '',
+};
 
 const fillFormFields = () => {
   const formDataFromLS = JSON.parse(
@@ -9,7 +13,8 @@ const fillFormFields = () => {
   if (formDataFromLS === null) {
     return;
   }
-  formDataFromEL = formDataFromLS;
+
+  Object.assign(formData, formDataFromLS);
 
   for (const key in formDataFromLS) {
     if (formDataFromLS.hasOwnProperty(key)) {
@@ -21,25 +26,23 @@ fillFormFields();
 
 const inputText = event => {
   const propKey = event.target.name;
-  formDataFromEL[propKey] = feedbackForm.elements[propKey].value.trim();
-  localStorage.setItem('feedback-form-state', JSON.stringify(formDataFromEL));
+
+  formData[propKey] = event.target.value.trim();
+
+  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 };
 
 const onSubmit = event => {
-  if (
-    formDataFromEL.email === undefined ||
-    formDataFromEL.message === undefined ||
-    formDataFromEL.email === '' ||
-    formDataFromEL.message === ''
-  ) {
+  if (formData.email === '' || formData.message === '') {
     return alert('Fill please all fields');
   } else {
-    console.log(formDataFromEL);
+    console.log(formData);
     event.preventDefault();
     event.target.reset();
-    formDataFromEL = {};
+    Object.keys(formData).forEach(key => (formData[key] = ''));
     localStorage.removeItem('feedback-form-state');
   }
 };
+
 feedbackForm.addEventListener('input', inputText);
 feedbackForm.addEventListener('submit', onSubmit);
